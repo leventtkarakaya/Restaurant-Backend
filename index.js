@@ -9,18 +9,6 @@ const app = express();
 
 db();
 
-app.options("*", cors());
-
-app.use(
-  cors({
-    origin: "https://restaurant-frontend-gules.vercel.app",
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    maxAge: 20000,
-    optionsSuccessStatus: 200,
-  })
-);
-
 app.use((req, res, next) => {
   res.locals.errors = [];
   next();
@@ -29,6 +17,16 @@ app.use((req, res, next) => {
 app.use(express.json({ limit: "3mb" })); // ? Json verileri alabilmek icin Limit ile
 
 app.use(express.urlencoded({ limit: "3mb", extended: true })); // ? Formdaki verileri alabilmek icin
+
+app.use(
+  cors({
+    origin: ["https://restaurant-frontend-dun.vercel.app"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+    maxAge: 20000,
+    optionsSuccessStatus: 200,
+  })
+);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
