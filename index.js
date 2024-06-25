@@ -20,10 +20,10 @@ app.use(express.urlencoded({ limit: "3mb", extended: true })); // ? Formdaki ver
 
 app.use(
   cors({
-    origin: ["https://restaurant-frontend-dun.vercel.app"],
+    origin: ["https://restaurant-frontend-gamma.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
-    maxAge: 20000,
+    maxAge: 3680,
     optionsSuccessStatus: 200,
   })
 );
